@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="css/tutorial.css" type="text/css"/>
+<head>
+    <style>
+      #map {
+        width: 800px;
+        height: 800px;
+      }
+    </style>
+
+    <title>Nice N' Fresh</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" type = "text/css"/>
+		<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+		<style type="text/css">
+			html,
+			body {
+			  height:100%
+			}
+	</style>
+  </head>
+
+
+  <body class="body" style="background-color:#f6f6f6" >
+  <div class="container-fluid" style="min-height:95%; ">
+  		<div class="row">
+			<div class="jumbotron">
+				<img src="img/faces2.jpg" style="height: 600px; width: 1700px; display: block; margin: 0 auto;">
+			    <h1>Nice N' Fresh</h1>
+			    <p>Find the best places to go shopping in West Lafayette!</p>
+  			</div>
+  		<div class="col-sm-10">
+	</div>
+  </div><hr>
+
+  <div class="row">
+  	<div class="col-sm-2">
+  		   <!-- Great, til you resize. -->
+  			<!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
+  			<div class="well bs-sidebar" id="sidebar" style="background-color:#fff">
+  			  <ul class="nav nav-pills nav-stacked">
+  				<li><a href='/'>Home</a></li>
+  				<li><a href='/recipe.html'>Fresh Recipes</a></li>
+  				<li><a href='/contact.html'>Contact Us</a></li>
+  			  </ul>
+  			</div> <!--well bs-sidebar affix-->
+  		  </div> <!--col-sm-2-->
+
+
+  <div class='container-fluid'>
+  			<br><br>
+  <div id="weather" class="text-right title-contain">Get weather</div>
+ <div id="map"></div>
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 40.4050411, lng: -86.8932353},
+          zoom: 12
+        });
+        init();
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+        <!--iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48576.304261184785!2d-86.95186221413658!3d40.452716079258124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8812fd472165042d%3A0xdf75e293a8a11bef!2sWest+Lafayette%2C+IN!5e0!3m2!1sen!2sus!4v1458919322935" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe-->
+  			</div>
+  		  </div>
+  		</div>
+  	</div>
+  	<div id="time" class="text-right title-contain"></div>
+
+ 	 <!-- jQuery -->
+	    <script src="js/bootstrap.min.js"></script>
+
+	    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/api.js" type="text/javascript" ></script>
+    <script src="js/initialize.js" type="text/javascript" ></script>
+
+    <footer>
+	  		<div class="container-fluid" style='margin-left:15px'>
+	  			<p><a href="#" target="blank">Contact</a> | <a href="#" target="blank">LinkedIn</a> | <a href="#" target="blank">Twitter</a> | <a href="#" target="blank">Google+</a></p>
+	  		</div>
+	</footer>
+
+ </body>
+</html>

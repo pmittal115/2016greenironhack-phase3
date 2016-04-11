@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <!--
+    put all the external resources in <head>
+    -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Stylish Portfolio - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+
+</head>
+
+    <link rel="stylesheet" href="map.css" type="text/css"/>
+    <link rel="stylesheet" href="format.css" type="text/css"/>
+    <script src="map.js" type="text/javascript"></script>
+    <script src="timestamp.js" type="text/javascript"></script>
+ </head>
+
+  <body>
+    <!--
+    here is the div for displaying the map
+    -->
+    <div id="map"></div>
+	<div id = "menu-cover">
+	<h3> CHEAP AND FRESH VAGETABLES </h3>
+	<p> Eat fresh and stay healthy </p>
+	</div>
+    <!--
+    You would also like to have div here to display the informaiton board, try it!
+    Remember to edit css layouts to show this div
+    -->
+
+
+    <!--
+    You should put your google api reference inside the <body>
+    Please update the api key if possible in case in remove my personal key someday in the future :D
+    -->
+    </script>
+
+  
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    </script>
+    
+    
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBlr9rPlKc9DTfo7Zi46JWTrjFgJj9J0o&callback=initMap">
+    </script>
+  </body>
+  
+  <!--
+  Your first page will be working now!
+  -->
+</html>

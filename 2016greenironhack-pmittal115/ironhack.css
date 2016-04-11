@@ -1,0 +1,57 @@
+html 
+
+body { 
+height: 100%; 
+margin: 0; 
+padding: 0; 
+}
+
+
+#map{
+	position: absolute;
+    /* cover 60 percent of the page width*/
+    width: 60%;
+    height: 100%;
+}
+
+#side-menu{
+	position: absolute;
+	top: 0%;
+	left: 60%;
+	width: 40%;
+	height: 100%;
+}
+
+#menu-cover{
+	position: absolute;
+	top: 3%;
+	left: 3%;
+}
+
+.menu-line{
+	height: 50px;
+}
+
+#menu-cover {
+	height: 89%;
+	width: 80%;
+	/* background color */
+	background-color: #d5d7d8;
+	/* radius for ellipse frame */
+    border-radius: 11px;
+    /* added some paddings */
+    padding: 24px 23px 20px;
+    /* font settings */
+    font-family: Arial;
+    font-size: 16px;
+}
+
+.menu-line{
+	border-radius: 12px;
+    box-shadow: none;
+    color: #000000;
+    font-family: Arial;
+    font-size: 13px;
+    line-height: 1.3;
+    padding: 3px 3px;
+}

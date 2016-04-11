@@ -1,0 +1,6 @@
+Here is the basic psuedo code for the project, it is very basic at this point because I haven't figured out how to code all of it:
+
+For the searching of a vegetable:
+
+Person enters a vegetable that they want to look for and where they are at
+The application then takes the information entered and uses the datasets that are connnected to search for the nearest farmers market and how much the vegetable should cost them. It will also search the climate data to see if the vegetables are fresh.

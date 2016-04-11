@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="css/tutorial.css" type="text/css"/>
+  <head>
+    <style>
+      #map {
+        width: 400px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 40.4050411, lng: -86.8932353},
+          zoom: 12
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+        <!--iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48576.304261184785!2d-86.95186221413658!3d40.452716079258124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8812fd472165042d%3A0xdf75e293a8a11bef!2sWest+Lafayette%2C+IN!5e0!3m2!1sen!2sus!4v1458919322935" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe-->
+  </body>
+</html>

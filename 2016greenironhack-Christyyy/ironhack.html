@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+  <title><b>Where is fresh vegetable ?</b></title>
+   <h1>Vegetables available this season</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?
+                      key=AIzaSyDgwf_kw1yUbh6ywFpjaX_FlQtV1Jzbm9w&sensor=false">
+    </script> 
+ </head>
+ <body onload="GetMap()">
+  <div id="mapContainer" 
+             style="width:500px;height:500px">
+  </div>
+  <script type="text/javascript"> 
+   function GetMap() {
+    var latlng = new google.maps.LatLng(40.4222238, -86.9100436);
+    var myOptions = { 
+      zoom: 8, 
+      center: latlng, 
+      mapTypeId: google.maps.MapTypeId.ROADMAP 
+    };
+
+    var container=document.getElementById("mapContainer");
+    map =  new google.maps.Map(container,myOptions);
+   }
+
+   marker1 = new google.maps.Marker({
+   position:new google.maps.LatLng(40.4223439,-86.9102153),
+   map: map
+});
+ 
+   </script>>
+  </body>
+
+
+<h2>Check pricelist by store</h2>
+<button type="button" >Payless</button>
+<button type="button" >Walmart</button>
+<button type="button" >Meijer</button>
+<button type="button" >Farmers 1</button>
+<button type="button" >Farmers 2</button>
+
+
+
+
+<a href="http://catalog.data.gov/dataset/climate-data-online-cdo">Climate Data Online (CDO)</a>
+</body>
+</html>

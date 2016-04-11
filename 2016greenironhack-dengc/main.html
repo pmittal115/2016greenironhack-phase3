@@ -1,0 +1,285 @@
+<!--
+This is the tutorial project for 2015-fall Purdue Ironhack, which is organized by Reserach Center of Open Digital Innovation(RCODI) at Purdue University. 
+If you want to know more about the Ironhack or about the RCODI, please find our website here: https://www.purdue.edu/opendigital/
+You can checkout the code for this project on github: https://github.com/charlessong0/2015-Purdue-Ironhack
+The demo page of this project is located at: http://test.rcodi.charlessong.me/
+-->
+
+<html>
+  <head>
+	<meta charset="UTF-8">
+	<meta name="descriptions" content="Place to Eat">
+	<meta name="author" content="Charles Song">
+
+	<link rel="stylesheet" href="css/main.css" >
+
+	<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+
+	<script src="js/main.js" type="text/javascript"></script>
+	<script src="js/script.js" type="text/javascript" ></script>
+
+ <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+
+  <script src="http://phuonghuynh.github.io/js/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/d3/d3.min.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/d3-transform/src/d3-transform.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/extarray.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/misc.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/cafej/src/micro-observer.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/microplugin/src/microplugin.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/bubble-chart.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/central-click/central-click.js"></script>
+  <script src="http://phuonghuynh.github.io/js/bower_components/bubble-chart/src/plugins/lines/lines.js"></script>
+  
+
+  </head>
+
+
+  <body>
+	<div id="header">
+			<h1>Lafayette Fresh Vegetable</h1>
+		<p id="title">Map of Lafayette and markets' info!</p>
+	</div>
+
+	<div id="map">
+		</div>
+
+	<div id="sec1">
+		<img src="image/market2.jpg" style="width:365px;height:470px;">
+
+	</div>
+
+
+	<div id="info">
+			<h2>Markekt Info:</h2>
+	</div>
+
+
+	<div id="content">
+
+		<div id="side-menu" class="menu-line">
+			<div id="menu-cover" class="menu-line">
+				<div id="basic-info" class="menu-line">
+					<div id="weather" class="menu-line">sunny!</div>
+					<div id="sec2" class="bubbleChart"></div>
+          
+
+				</div>
+				<div id="position-info">
+					<div id="market" class="menu-line">
+						<div id="market-name" class="test"></div>
+						<div id="website" class="test"></div>
+					</div>
+					<div id="website" class="menu-line"></div>
+					<div id="street-name" class="menu-line"></div>
+					<button class="button1" id ="btn1" onclick="myFunction()" disabled>Overview of the market (score out of 100):</button>
+          <button class="button2" id ="btn2" onclick="myNewFunction()" disabled>Rank among markets:</button>
+
+          <script type="text/javascript">
+
+          function myNewFunction() {
+
+            $("#sec2").empty();
+            document.getElementById("btn1").disabled = false;
+            document.getElementById("btn2").disabled = true;
+    $(document).ready(function () {
+      bubbleChart = new d3.svg.BubbleChart({
+    supportResponsive: true,
+    //container: => use @default
+    size: 600,
+    //viewBoxSize: => use @default
+    innerRadius: 600 / 3.5,
+    //outerRadius: => use @default
+    radiusMin: 50,
+    //radiusMax: use @default
+    //intersectDelta: use @default
+    //intersectInc: use @default
+    //circleColor: use @default
+    data: {
+      items: [
+        {text: "Price", count: Math.round(10 * Math.random()+1)},
+        {text: "Distance to Downtown", count: Math.round(10 * Math.random()+1)},
+        {text: "Freshness", count: Math.round(10 * Math.random()+1)},
+        {text: "Distance to Purdue", count: Math.round(10 * Math.random()+1)},
+        {text: "Service", count: Math.round(10 * Math.random()+1)},
+        {text: "Open Hours", count: Math.round(10 * Math.random()+1)},
+        {text: "Rating", count: Math.round(10 * Math.random()+1)},
+        {text: "Kinds of Vegetables", count: Math.round(10 * Math.random()+1)},
+        {text: "Others", count: Math.round(10 * Math.random()+1)},
+      ],
+      eval: function (item) {return item.count;},
+      classed: function (item) {return item.text.split(" ").join("");}
+    },
+
+    plugins: [
+    
+      {
+        name: "lines",
+        options: {
+          format: [
+            {// Line #0
+              textField: "count",
+              classed: {count: true},
+              style: {
+                "font-size": "28px",
+                "font-family": "Source Sans Pro, sans-serif",
+                "text-anchor": "middle",
+                fill: "black"
+              },
+              attr: {
+                dy: "0px",
+                x: function (d) {return d.cx;},
+                y: function (d) {return d.cy;}
+              }
+            },
+            {// Line #1
+              textField: "text",
+              classed: {text: true},
+              style: {
+                "font-size": "14px",
+                "font-family": "Source Sans Pro, sans-serif",
+                "text-anchor": "middle",
+                fill: "black"
+              },
+              attr: {
+                dy: "20px",
+                x: function (d) {return d.cx;},
+                y: function (d) {return d.cy;}
+              }
+            }
+          ],
+          centralFormat: [
+            {// Line #0
+              style: {"font-size": "50px"},
+              attr: {}
+            },
+            {// Line #1
+              style: {"font-size": "30px"},
+              attr: {dy: "40px"}
+            }
+          ]
+        }
+      }]
+  });
+
+
+});
+}
+          </script>
+
+					<script>
+function myFunction() {
+	// var x = document.getElementById("sec2");
+ //  x.remove("bubbleChart");
+ $("#sec2").empty();
+ document.getElementById("btn2").disabled = false;
+ document.getElementById("btn1").disabled = true;
+    $(document).ready(function () {
+    	bubbleChart = new d3.svg.BubbleChart({
+    supportResponsive: true,
+    //container: => use @default
+    size: 600,
+    //viewBoxSize: => use @default
+    innerRadius: 600 / 3.5,
+    //outerRadius: => use @default
+    radiusMin: 50,
+    //radiusMax: use @default
+    //intersectDelta: use @default
+    //intersectInc: use @default
+    //circleColor: use @default
+    data: {
+      items: [
+        {text: "Price", count: Math.round(100 * Math.random()+1)},
+        {text: "Distance to Downtown", count: Math.round(100 * Math.random()+1)},
+        {text: "Freshness", count: Math.round(100 * Math.random()+1)},
+        {text: "Distance to Purdue", count: Math.round(100 * Math.random()+1)},
+        {text: "Service", count: Math.round(100 * Math.random()+1)},
+        {text: "Open Hours", count: Math.round(100 * Math.random()+1)},
+        {text: "Rating", count: Math.round(100 * Math.random()+1)},
+        {text: "Kinds of Vegetables", count: Math.round(100 * Math.random()+1)},
+        {text: "Others", count: Math.round(100 * Math.random()+1)},
+      ],
+      eval: function (item) {return item.count;},
+      classed: function (item) {return item.text.split(" ").join("");}
+    },
+
+    plugins: [
+    
+      {
+        name: "lines",
+        options: {
+          format: [
+            {// Line #0
+              textField: "count",
+              classed: {count: true},
+              style: {
+                "font-size": "28px",
+                "font-family": "Source Sans Pro, sans-serif",
+                "text-anchor": "middle",
+                fill: "white"
+              },
+              attr: {
+                dy: "0px",
+                x: function (d) {return d.cx;},
+                y: function (d) {return d.cy;}
+              }
+            },
+            {// Line #1
+              textField: "text",
+              classed: {text: true},
+              style: {
+                "font-size": "14px",
+                "font-family": "Source Sans Pro, sans-serif",
+                "text-anchor": "middle",
+                fill: "white"
+              },
+              attr: {
+                dy: "20px",
+                x: function (d) {return d.cx;},
+                y: function (d) {return d.cy;}
+              }
+            }
+          ],
+          centralFormat: [
+            {// Line #0
+              style: {"font-size": "50px"},
+              attr: {}
+            },
+            {// Line #1
+              style: {"font-size": "30px"},
+              attr: {dy: "40px"}
+            }
+          ]
+        }
+      }]
+  });
+
+
+});
+}
+</script>
+					<div id="open-status" class="menu-line"></div>
+					<div id="scores" class="menu-line"></div>
+
+
+
+				</div>
+			
+			</div>
+			
+		</div>
+
+	</div>
+	<div id="footer">
+	</div>
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhs2R0Maa3QQtLZbtbstPXK7w9cgmJho&callback=initMap"></script>
+
+<a title="Real Time Analytics" href="http://clicky.com/100881512"><img alt="Real Time Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+<script src="//static.getclicky.com/js" type="text/javascript"></script>
+<script type="text/javascript">try{ clicky.init(100881512); }catch(e){}</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100881512ns.gif" /></p></noscript>
+  </body>
+</html>

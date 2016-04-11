@@ -1,0 +1,16 @@
+html, body{height:100%;}
+body{font-family: 'Open Sans', sans-serif; font-weight: 300; }
+body.homepage{background: url(../images/farm.jpg) no-repeat center 0; background-size: cover; color:#fff;}
+.header{background: #dacd2b; padding: 20px 0; color:#fff;}
+.header h3{margin: 20px 0; font-weight: 300; font-size: 32px;}
+.button-block{padding: 45% 0 0;}
+.btn.btn-primary{background: none; border: 2px solid #dacd2b; padding: 10px 25px; border-radius: 0; font-size: 20px; position: relative; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s;}
+.btn.btn-primary:hover,.btn.btn-primary:active{background: none;border: 2px solid #dacd2b;}
+.btn:after {content: ''; position: absolute; z-index: -1; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; width: 100%;
+    height: 0; top: 0; left: 0; background: #dacd2b;}
+.btn:hover:after, .btn:active:after {height: 100%;}
+.body-container{padding: 50px 0;}
+.recipe-item{font-size: 16px; font-weight: 400; margin-bottom: 20px;}
+.recipe-item ul{list-style: none; padding:0;}
+.recipe-item h4{text-transform: uppercase; font-size: 24px;}
+.map{padding: 2px; border: 1px solid #ddd;}

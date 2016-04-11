@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Fresh Vegetables Application</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+        
+        <!-- code added-->
+        
+        <link rel="stylesheet" href="css/tutorial.css" type="text/css"/>
+		<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="js/RadarChart.js"></script>
+        <script src="js/tutorial.js" type="text/javascript"></script>
+        <script src="js/script.js" type="text/javascript" ></script>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
+        <!-- For the fancy drop down -->
+        <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
+        <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
+        <!-- For the social media share buttons -->
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher: "b7aa0060-f57d-4ef8-aa69-7420144f6b4b", doNotHash: false, doNotCopy: false, hashAddressBar: false});		
+        </script>
+        
+        <!-- For the API and Maps -->
+        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css"></link>
+		<link type="text/css" rel="stylesheet" href="css/style_api.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        
+      	<!-- For the farmers API -->
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/style_farmer.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script language="javascript" type="text/javascript" src="js/map.js"></script>
+        <script language="javascript" type="text/javascript" src="js/search.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+        
+        <!-- For the tab view -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+        <!-- For the radar graph -->
+        <!-- Google fonts -->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+		<!-- D3.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+        
+        <!-- Walmart API -->
+        <script language="javascript" type="text/javascript" src="js/walmart_api.js"></script>
+        
+        <!-- Table API -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js" charset="utf-8"></script>
+		<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+        
+	</head>
+	<body>
+    <!-- begin template -->
+    <div class="navbar navbar-custom navbar-fixed-top">
+     <div class="navbar-header">
+       <p><a class="navbar-brand" href="index.html"><strong>FreshVeggie</strong></a></p>
+       <p>
+         <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </a></p>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          <li class="active"><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="wheather.html">Weather Details</a></li> 
+            <li><a href="recipe.html" class="wrapper-dropdown-1">Recipe of the Day</a></li>
+            <li>&nbsp;</li>
+          </ul> 
+        </div>
+    </div>
+
+    <!-- <div id="map-canvas"></div> -->
+    <!-- Google Maps -->
+    <div class="themap" id="map-farmer"></div>
+    
+    <!-- <div id="map"> </div> -->
+    <div class="container-fluid" id="main">
+      <div class="row">
+        <div class="col-xs-8" id="left">
+        <br> <br> <br> <br><br>
+        <!-- Title bar -->
+           <div class="panel panel-default">
+            <div class="panel-heading"><a href="">Weather Details on Gauge Meters: West Lafayette, IN (via Yahoo API)</a></div>
+          </div> 
+        <!-- gauge bars -->
+	    <div id="g1"></div>
+        <div id="g2"></div>
+        <div id="g3"></div>
+        <div id="g4"></div>
+        
+        <!-- Title bar -->
+           <div class="panel panel-default">
+            <div class="panel-heading"><a href="">Find Fresh Vegetables in your Area (Enter ZipCode to proceed further!)</a></div>
+          </div> 
+  		<!-- Start search bar -->  
+          <div>
+           	<form method="get" id="chooseZip">
+           		<div id="wrapper">
+            		<div id="c1">
+            		  <!-- <input name="submit" type="submit" class="wrapper-dropdown-3" id="submit" value="Locate Me!"> -->
+            		</div><!--
+    				--><div id="c2">
+            		  <label for="textfield"><strong>ZipCode:</strong></label>
+                      <input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
+            		</div><!--
+    				--><div id="c3">
+            		  <input type="submit" name="submit2" class="wrapper-dropdown-3" id="submit2" value="Find">
+            		</div>
+                    <div id="results"></div>
+          		</div>
+          	</form>
+          </div>
+          <br><br>
+           <hr>
+          <div class="container">
+              
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Marketplace Details</a></li>
+                <li><a data-toggle="tab" href="#menu1">Graphical View</a></li>
+                <li><a data-toggle="tab" href="#menu2">Price Comparison</a></li>
+               </ul>
+             <hr>
+              <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                  <br>
+                  <div id="vegdetail">
+ 				  </div>						
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                  <h3>Graphical Scale</h3>
+                  <div class="radarChart"></div>
+					<script src="js/radarChart.js"></script>	
+                    <script>
+                        ////////////////////////////////////////////////////////////// 
+                        //////////////////////// Set-Up ////////////////////////////// 
+                        ////////////////////////////////////////////////////////////// 
+            
+                        var margin = {top: 100, right: 100, bottom: 100, left: 100},
+                            width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+                            height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+                                
+                        ////////////////////////////////////////////////////////////// 
+                        ////////////////////////// Data ////////////////////////////// 
+                        ////////////////////////////////////////////////////////////// 
+            
+                        var data = [
+                                  [//Selected Farmers Market
+                                    {axis:"Location",value:getRandomInt(0.21, 0.23)},
+                                    {axis:"Freshness",value:getRandomInt(0.26, 0.29)},
+                                    {axis:"Price",value:getRandomInt(0.27, 0.30)},
+                                    {axis:"Availability",value:getRandomInt(0.15, 0.19)},
+									{axis:"Open Hours",value:getRandomInt(0.15, 0.19)},
+									{axis:"Customer Reviews",value:getRandomInt(0.15, 0.19)}
+                                  ]
+                                ];
+                        ////////////////////////////////////////////////////////////// 
+                        //////////////////// Draw the Chart ////////////////////////// 
+                        ////////////////////////////////////////////////////////////// 
+            
+                        var color = d3.scale.ordinal()
+                            .range(["#EDC951","#CC333F","#00A0B0"]);
+                            
+                        var radarChartOptions = {
+                          w: width,
+                          h: height,
+                          margin: margin,
+                          maxValue: 0.5,
+                          levels: 5,
+                          roundStrokes: true,
+                          color: color
+                        };
+                        //Call function to draw the Radar chart
+                        RadarChart(".radarChart", data, radarChartOptions);
+                    </script>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                  <h3>Price Comparison</h3>
+                 <!-- <div id="price_comparison"> -->
+                  
+                  <table id="example" class="display" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Product Items</th>
+                            <th>Walmart</th>
+                            <th>Meijer</th>
+                        </tr>
+                    </thead>
+                    <hr>
+                    <tfoot>
+                        <tr>
+                            <th>Product Items</th>
+                            <th>Walmart ($/lbs)</th>
+                            <th>Meijer</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Potato</td>
+                            <td>2.5</td>
+                            <td>3</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Bell Pepper</td>
+                            <td>2.5</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Salad</td>
+                            <td>4</td>
+                            <td>5.5</td>
+                        </tr>
+                     </tbody>
+                </table>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <!-- social icons -->
+            <span class='st_facebook_large' displayText='Facebook'></span>
+            <span class='st_twitter_large' displayText='Tweet'></span>
+            <span class='st_linkedin_large' displayText='LinkedIn'></span>
+            <span class='st_pinterest_large' displayText='Pinterest'></span>	
+            <p> © 2016 IronHack Participant (Saurav Nanda). All rights reserved </p>
+        </div>
+      </div>
+    </div>
+    <!-- end template -->
+
+	<!-- script references -->
+		
+		<script src="js/bootstrap.min.js"></script>
+		
+		<script src="js/scripts.js"></script>
+        
+        <!-- code added -->
+       <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhs2R0Maa3QQtLZbtbstPXK7w9cgmJho&callback=initMap"></script> -->
+
+	<script>
+		$(document).ready(function() {
+    	$('#example').DataTable();
+		} );
+	</script>
+	<!-- <script src="//static.getclicky.com/js" type="text/javascript"></script>
+	<script type="text/javascript">try{ clicky.init(100881512); }catch(e){}</script>
+	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100881512ns.gif" /></p></noscript> -->
+    
+    <!-- for API -->
+    <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	
+	
+	<script type="text/javascript" src="js/script_api.js"></script>
+	<script>
+		ko.applyBindings(new QuickDataTool.ViewModel());
+	</script>
+    <!-- For the gauge meters -->
+    <script src="js/raphael-2.1.4.min.js"></script>
+	<script src="js/justgage.js"></script>
+        
+    <!-- Wheather Gauge Meters from Yahoo API -->
+	<script>
+	  var select = "results";
+
+	  var callbackFunction = function(data) {
+		//var wind = data.query.results.channel.wind;
+		var windy = data.query[select].channel.wind;
+		var temp = data.query.results.channel.item.condition;
+		var atm =  data.query.results.channel.atmosphere;
+		//alert(wind.chill);
+		//document.getElementById("chill").innerHTML = windy.chill;
+		var g1, g2, g3, g4;
+		var x1 = windy.chill;
+		var x2 = windy.speed;
+		var x3 = temp.temp;
+		var x4 = atm.humidity;
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g1 = new JustGage({
+            id: "g1",
+            value: x3,
+            min: -50,
+            max: 100,
+            title: "Temperature",
+            label: "F ",
+			labelFontColor: "blue"
+        });
+
+        g2 = new JustGage({
+            id: "g2",
+            value: x1,
+            min: -50,
+            max: 50,
+            title: "Wind Chill",
+            label: "F",
+			labelFontColor: "blue"
+        });
+
+        g3 = new JustGage({
+            id: "g3",
+            value: x2,
+            min: 0,
+            max: 50,
+            title: "Wind Speed",
+            label: "Miles per Hour",
+			labelFontColor: "blue"
+        });
+		
+		g4 = new JustGage({
+            id: "g4",
+            value: x4,
+            min: 0,
+            max: 100,
+            title: "Humidity",
+            label: "Percentage %",
+			labelFontColor: "blue"
+        });
+
+        setInterval(function() {
+            //g1.refresh(getRandomInt(350, 980));
+            //g2.refresh(getRandomInt(0, 49));
+            //g3.refresh(getRandomInt(101, 200));
+        }, 2500);
+    });
+	
+	  };
+	</script>
+	
+	<script src="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid = 2434562&format=json&callback=callbackFunction"></script>
+        
+    
+	</body>
+</html>

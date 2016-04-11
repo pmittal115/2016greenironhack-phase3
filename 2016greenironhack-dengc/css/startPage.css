@@ -1,0 +1,87 @@
+/*
+This is the tutorial project for 2015-fall Purdue Ironhack, which is organized by Reserach Center of Open Digital Innovation(RCODI) at Purdue University. 
+If you want to know more about the Ironhack or about the RCODI, please find our website here: https://www.purdue.edu/opendigital/
+You can checkout the code for this project on github: https://github.com/charlessong0/2015-Purdue-Ironhack
+The demo page of this project is located at: http://test.rcodi.charlessong.me/
+*/
+
+/* make the body div cover the whole page */
+html, body { 
+height: 100%; 
+margin: 12; 
+padding: 0; 
+background-image: url("background.jpeg");
+background-repeat: no-repeat;
+background-position: bottom;
+-webkit-background-size: 1400px 1400px;
+}
+
+/* use "#" for ids and use "." for classes
+usually an id in unique in one html page*/
+#header {
+    background-color:green;
+    text-align:center;
+    padding:5px;
+}
+
+h1 {
+    color: red;
+    font-style: oblique;
+    font-size: 333%;
+}
+
+h3 {
+    color: red;
+    font-size: 160%;
+}
+
+#text{
+	font-size: 120%;
+	color:black;
+}
+
+img {
+    opacity: 0.8;
+    width:350px;
+    height:250px
+}
+
+
+#sec1{
+	position: absolute;
+	left: 4%;
+	top:45%;
+}
+
+#sec2{
+	position: absolute;
+	left: 72%;
+	top: 45%;
+}
+
+#sec3{
+	position: absolute;
+	left: 27%;
+	top: 38%;
+}
+
+#sec4{
+	position: absolute;
+	left: 36%;
+	top: 75%;
+}
+
+#sec5{
+	position: absolute;
+	left: 51%;
+	top: 43%;
+
+}
+
+#sec6{
+	position: absolute;
+	left: 19%;
+	top: 93%;
+
+}
+

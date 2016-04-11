@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="UTF-8">
+	<meta name="descriptions" content="Fresh Vegetables">
+	<meta name="author" content="Huayi Fang">
+
+	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	<script src="javascript/map.js" type="text/javascript"></script>	
+	<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+  <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.--><script>var __adobewebfontsappname__="dreamweaver"</script><script src="http://use.edgefonts.net/andika:n4:default;cabin:n4:default.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+         $("#mapIcon").click(function(){
+             document.getElementById("content").innerHTML = "<p>You may close this window <a href='javascript:closeWindow("+myvar+","+mytxt+");'>here</a></p>";
+         });
+    });
+</script>
+</head>
+  <body>
+<div id="info">
+  <div id="headLine">&nbsp;</div>
+  <div id="content">
+    <div class="card" id="card1">19 <br> stores<br> around<br> you <br></div>
+    <div class="card" id="card2">Best Fruit for summer<br> Apple</div>
+    <div class="card" id="card3">Do you know.. <br> <a href="https://en.wikipedia.org/wiki/Banana">banana</a></div>
+
+    <div class="card" id="card4">Weather today</div>
+  </div>
+</div>
+<div id="menu">
+<div id="logo"><img src="css/c.jpg" width="21" height="21" id="logoIcon">  CHEAPEST</div>
+  <a href="index.html"><div class="navi" id="indexIcon">Index</div></a>
+  <a href="map.html"><div class="navi" id="mapIcon">Map</div></a>
+</div>
+  	<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqhZ6hHcWDXbjajiHWtb5wGfYLdSaWDyo&callback=initMap">
+    </script>
+  </body>	
+
+</html>

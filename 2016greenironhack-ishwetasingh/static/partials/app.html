@@ -1,0 +1,111 @@
+<style>
+
+  /* style for calender */
+  .full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }
+
+  path.link {
+    fill: none;
+    stroke: #666;
+    stroke-width: 1.6px;
+  }
+
+  path.link.twofive {
+    opacity: 0.25;
+  }
+
+  path.link.fivezero {
+    opacity: 0.50;
+  }
+
+  path.link.sevenfive {
+    opacity: 0.75;
+  }
+
+  path.link.onezerozero {
+    opacity: 1.0;
+  }
+
+  circle {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: 1.5px;
+  }
+
+  text {
+    fill: #000;
+    font: 10px sans-serif;
+    pointer-events: none;
+  }
+
+</style>
+
+<div>
+
+  <div class="row">
+    <div class="col-md-12" ng-show="showLoadGif">
+        <img ng-src="/static/img/gif/loading.gif" alt="Loading"
+          class="img-responsive center-block"/>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-3">
+
+        <label>Start Date</label>
+        <p class="input-group">
+          <input type="text" class="form-control"
+                uib-datepicker-popup="{{format}}" 
+                ng-model="param.dt1"
+                is-open="popup1.opened"
+                datepicker-options="dateOptions" 
+                ng-required="true"
+                close-text="Close"
+                alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+
+        <label>End Date</label>
+        <p class="input-group">
+          <input type="text" class="form-control"
+                uib-datepicker-popup="{{format}}" 
+                ng-model="param.dt2"
+                is-open="popup2.opened"
+                datepicker-options="dateOptions" 
+                ng-required="true"
+                close-text="Close"
+                alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+
+        /*<label>City Id</label>*/
+        /*<input type="text" ng-model="param.city_id" class="form-control" placeholder="not implemented" disabled>*/
+
+        <br>
+        <label>Vegetable Price Threshold</label>
+        <input type="text" ng-model="param.tranNumber" class="form-control">
+
+        <br>
+        <button type="button" class="btn btn-success" ng-click="updateNetwork()">Get Veggies Graph</button>
+      </div>
+
+
+      <div class="col-md-9" id="network_div" ng-show="!showLoadGif">
+          <h3 class="text-center">Graph of Veggies Price Variance.</h3>
+      </div>
+  </div>
+
+</div>
+

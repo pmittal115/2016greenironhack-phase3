@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+
+    <title>VeggieMap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+
+
+
+
+<div class="col-md-12">
+ <h1 style ="text-align: center" style = "color:#f00">VeggieMap</h1> 
+</div>
+
+</div>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="col-md-5">
+      <!--Sidebar content-->
+        <h1>PLEASE ENTER A VEGETABLE!</h1>
+
+<p style ="text-align: left" title="Please enter a vegetable!">
+Once you have entered a vegetable we will search for fresh veggies!
+    
+    </p>
+
+<p style ="text-align: left" title="Please enter a vegetable!">
+We will also use your location to further improve your expierence!
+    
+</p>
+
+<p style ="text-align: left" title="Please enter a vegetable!">
+Below is a list of all the Farmers Markets near you! Click to visit their website!
+    
+</p>
+
+<p> <a href ="http://www.lafayettefarmersmarket.com"
+   style="text-align: right" > A: Historic Farmers Market</a>
+    </p>
+
+<p> <a href ="http://www.purdue.edu/sustainability/initiatives/food/farmersmarket.html"
+   style="text-align: right" > B: Purdue Farmers Market</a>
+    </p>
+
+<p> <a href ="http://www.westlafayette.in.gov/farmersmarket"
+   style="text-align: right" > C: Sagamore West Farmers Market</a>
+    </p>
+
+<p> <a href ="http://wlfarmersmarket.com"
+   style="text-align: right" > D: West Lafayette Farmers Market</a>
+    </p>
+
+<form action="vegetable.asp">
+Vegetable: <input type="text" name="Vegetable" value=""><br>
+    <input type="submit" value="Submit does not work yet">
+</form> 
+
+    </div>
+    <div class="col-md-7">
+      <!--Body content-->
+        <script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+var myCenter = new google.maps.LatLng(40.4259,-86.9081);
+var HistoricFarmersMarket=new google.maps.LatLng(40.41772,-86.8919);
+var PurdueFarmersMarket = new google.maps.LatLng(40.42583, -86.9142);
+var SagamoreWestFarmersMarket = new google.maps.LatLng(40.4445,-86.9136);
+var WestLafayetteFarmersMarket = new google.maps.LatLng(40.46147,-86.9158);
+var marker;
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:12,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker=new google.maps.Marker({
+  position:HistoricFarmersMarket,
+  label: 'A',
+  });
+
+var marker2=new google.maps.Marker({
+  position:PurdueFarmersMarket,
+  label: 'B',
+  });
+
+var marker3=new google.maps.Marker({
+  position:SagamoreWestFarmersMarket,
+  label: 'C',
+  });
+
+var marker4=new google.maps.Marker({
+  position:WestLafayetteFarmersMarket,
+  label: 'D',
+  });
+
+marker.setMap(map);
+marker2.setMap(map);
+marker3.setMap(map);
+marker4.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+
+<div id="googleMap" style="width:fill-available;height:500px;"></div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<style>
+body {background-color: #ffcccc;}
+</style>
+<html>
+</head>
+
+</html>
+
+

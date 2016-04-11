@@ -1,0 +1,129 @@
+<!--
+This is the tutorial project for 2015-fall Purdue Ironhack, which is organized by Reserach Center of Open Digital Innovation(RCODI) at Purdue University. 
+If you want to know more about the Ironhack or about the RCODI, please find our website here: https://www.purdue.edu/opendigital/
+You can checkout the code for this project on github: https://github.com/charlessong0/2015-Purdue-Ironhack
+The demo page of this project is located at: http://test.rcodi.charlessong.me/
+-->
+
+<html>
+  <head>
+	<meta charset="UTF-8">
+	<meta name="descriptions" content="Place to Eat">
+	<meta name="author" content="Charles Song">
+
+	<link rel="stylesheet" href="css/startPage.css" >
+    <link rel="stylesheet" href="css/speedMode.css" >
+
+
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Play:700,400' type='text/css'>
+    <script type="text/javascript" src="http://iop.io/js/vendor/d3.v3.min.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerEvents/pointerevents.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/vendor/polymer/PointerGestures/pointergestures.js"></script>
+    <script type="text/javascript" src="http://iop.io/js/iopctrl.js"></script>
+    
+    <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+    <script src="js/liquidFillGauge.js" language="JavaScript"></script>
+    <style>
+        .liquidFillGaugeText { font-family: Helvetica; font-weight: bold; }
+    </style>
+
+  </head>
+
+
+  <body>
+	<div id="header">
+			<h1>Lafayette Fresh Vegetable</h1>
+		<p id = "text"><a href="main.html">Try to find a market for fresh vegetable? Check it out! &#10154; &#10152; &#8688; &#10140; &#8658;</a></p>
+
+
+	</div>
+
+	<div id="sec2">
+		<img src="image/vegetable1.jpg" >
+
+	</div>
+
+		<div id="sec1">
+				<img src="image/market1.jpg">
+	</div>
+
+	
+	<div id="sec3">
+		<span id="speedometer"></span>
+		<script>
+        var svg = d3.select("#speedometer")
+                .append("svg:svg")
+                .attr("width", 400)
+                .attr("height", 400);
+
+
+        var gauge = iopctrl.arcslider()
+                .radius(120)
+                .events(false)
+                .indicator(iopctrl.defaultGaugeIndicator);
+        gauge.axis().orient("in")
+                .normalize(true)
+                .ticks(12)
+                .tickSubdivide(3)
+                .tickSize(10, 8, 10)
+                .tickPadding(5)
+                .scale(d3.scale.linear()
+                        .domain([0, 100])
+                        .range([-3*Math.PI/4, 3*Math.PI/4]));
+
+        var segDisplay = iopctrl.segdisplay()
+                .width(80)
+                .digitCount(4)
+                .negative(false)
+                .decimals(0);
+
+        svg.append("g")
+                .attr("class", "segdisplay")
+                .attr("transform", "translate(130, 200)")
+                .call(segDisplay);
+
+        svg.append("g")
+                .attr("class", "gauge")
+                .call(gauge);
+
+        var degree = 100 * Math.random()
+
+        segDisplay.value(degree);
+        gauge.value(degree);
+    
+    </script>
+	</div>
+
+	<div id="sec4">
+    	<h3> Degree </h3>
+	</div>
+
+    <div id="sec5">
+            <svg id="fillgauge1" width="97%" height="250" onclick="gauge1.update(NewValue());"></svg>
+<script language="JavaScript">
+    var gauge1 = loadLiquidFillGauge("fillgauge1", 100 * Math.random());
+    var config1 = liquidFillGaugeDefaultSettings();
+    config1.circleColor = "#FF7777";
+    config1.textColor = "#FF4444";
+    config1.waveTextColor = "#FFAAAA";
+    config1.waveColor = "#FFDDDD";
+    config1.circleThickness = 0.2;
+    config1.textVertPosition = 0.2;
+    config1.waveAnimateTime = 1000;
+
+    function NewValue(){
+        if(Math.random() > .5){
+            return Math.round(Math.random()*100);
+        } else {
+            return (Math.random()*100).toFixed(1);
+        }
+    }
+</script>
+
+    <div id="sec6">
+        <h3> Chance of Rain </h3>
+    </div>
+
+    </div>  	
+  </body>
+</html>

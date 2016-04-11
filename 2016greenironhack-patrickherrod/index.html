@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="Pat Herrod" content="">
+    <link rel="icon" href="site_includes/fav.jpeg">
+
+    <title>Pro-Compare</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="site_includes/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="site_includes/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="site_includes/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="site_includes/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="site_includes/carousel.css" rel="stylesheet">
+    <script language="javascript" type="text/javascript" src="site_includes/jquery-2.1.1.min.js"></script>
+    <script src="site_includes/d3.min.js"></script>
+    <script src="site_includes/radarChart.js"></script>
+    <script src="site_includes/bootstrap.min.js"></script>
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Pro-Compare</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <!--<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>-->
+              </ul>
+            </div>
+          </div>
+        </nav>
+       </div>
+      </div>
+
+      <div id="title">
+        <h2>Welcome to Pro-Compare!</h2>
+      </div>
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div id="page" style="position: relative; background-color: #fff">
+    <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-4">
+          <img class="img-circle" src="site_includes/info-icon.jpeg" alt="Generic placeholder image" width="140" height="140">
+          <h2>About</h2>
+          <p>This page is a source of information for smart customers to compare local produce.  Information about prices, distance, and freshness can be found here.</p>
+          <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="site_includes/user-edit-icon.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>User Input</h2>
+          <p>Users can help provide information by inputing prices they find while visiting local vendors.</p>
+          <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" src="site_includes/Mail-icon.png" alt="Generic placeholder image" width="140" height="140">
+          <h2>Contact</h2>
+          <p>For feedback, updates, corrections, or just to say hi!  A responsible individual can be reached at pherrod [at] purdue [dot] edu.</p>
+          <!--<p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>-->
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div id="mapText"class="col-md-5">
+          <h2 class="featurette-heading">Map of local produce.<span class="text-muted">	Compare produce prices.</span></h2>
+          <p class="lead">Select your local market (or click on the map), select produce type, then your produce item from the dropdown list!</p>
+	  <div class="form-group">
+            <label for="marketInput">Market</label>
+            <select class="form-control selector2"></select>
+          </div>
+	  <div class="form-group">
+             <label for="distanceInput">Distance</label>
+             <input type="text" class="form-control" id="distance">
+          </div>
+	  <div class="btn-group" data-toggle="buttons">
+           <label class="btn btn-primary active">
+             <input type="radio" name="food" id="option1" value="fruits" autocomplete="off" checked>Fruits
+           </label>
+           <label class="btn btn-primary">
+             <input type="radio" name="food" id="option2" value="veggies" autocomplete="off">Vegetables
+           </label>
+         </div>
+	 <select id="selector" class="form-control"></select>
+	 <div class="radarChart"></div>
+        </div>
+
+        <div id="map-column" class="col-md-7">
+          <div id="map-anchor" style="height: 10px"></div>
+	  <div id="outer-map-holder">
+	    <div id="map-holder">
+	      <div id="map"></div>
+	    </div>
+	  </div>
+	  <p>This map is very dynamic! You can click on any icon to look at the distance to that market/store. (If you do not see any markers, please refresh the page!).
+	  One marker represents you! The app attempts to automatically get your location, but if you prefer to manually set your place, you can drag and drop that marker.
+ 	  You can also zoom!</p>
+	</div>
+      </div>
+<!--
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+          <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+-->
+      <div class="row featurette">
+        <div class="col-md-5">
+          <h2 class="featurette-heading">User Input. <span class="text-muted">Please help!</span></h2>
+          <p class="lead">Select the local market below and input either a new product, or edit an existing item.</p>
+        <form>
+	<div class="form-group">
+	  <label for="marketInput">Market</label>
+	    <input type="text" class="form-control" id="marketInput" placeholder="New Market">
+	    <select class="form-control selector2"></select>
+	</div>
+	<div class="form-group">
+	  <label for="itemInput">Item</label>
+	    <input type="text" class="form-control" id="itemInput">
+	</div>
+	<p>Please rate this item's freshness!</p>
+	<label class="radio-inline">
+	  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1 *Not fresh
+	</label>
+	<label class="radio-inline">
+	  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+	</label>
+	<label class="radio-inline">
+	  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+	</label>
+	<label class="radio-inline">
+	  <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4"> 4
+	</label>
+	<label class="radio-inline">
+	  <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5"> 5 *Very Fresh!
+	</label>
+	<div class="checkbox">
+	  <label>
+	    <input type="checkbox"> Check me out
+	  </label>
+	</div>
+	<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+	</div>
+        <div class="col-md-7">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2015 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+       <script id="source" language="javascript" type="text/javascript">
+
+	/* Function to query database containg produce list, compiled from state.gov webstes of Indiana, Illinois, Ohio. 
+	On successful response, the function populates the selection list, where users can select the produce item to
+	investigate */
+	$(function() {
+		$('#div1').html("test: " + $('input:radio[name=food]:checked').val());
+		$.ajax({                                      
+	        	url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
+              		type: 'post',
+              		datatype: "json",
+              		data : {"column":"*",
+                  		"table": $('input:radio[name=food]:checked').val(),
+                  		"order_by" : "food_name"},
+              		success: function(data) {          //on recieve of reply
+                		var id;
+               	 		var fname;
+                		for (x = 0; x < data.length; x++) {
+                  			fname = data[x]['food_name'];
+                  			$('#selector').append($('<option />').val(data[x]['food_id']).text(data[x]['food_name']));
+                		}
+                		$('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
+              		}
+            	});
+	});
+
+
+	/* Listener funciton that queries a produce database.  This function is updates the selction list based on the button
+	pressed by the user, either Fruits or Vegetables */
+	$("input[name=food]:radio").change(function () {
+        	$('#selector').html("");
+             	$.ajax({                                      
+              		url: "http://herrod-champ.sensidev.com/api.php",                  //the script to call to get data          
+              		type: 'post',
+              		datatype: "json",
+              		data : {"column":"*",
+                  		"table": $('input:radio[name=food]:checked').val(),
+                  		"order_by" : "food_name"},
+              		success: function(data) {          //on recieve of reply
+                		var id;
+                		var fname;
+                		for (x = 0; x < data.length; x++) {
+                  			fname = data[x]['food_name'];
+                  			$('#selector').append($('<option />').val(data[x]['food_id']).text(data[x]['food_name']));
+                		}
+                		$('#div1').html("<b>id: </b>"+id+"<b> name: </b>"+fname);
+              		}
+            	});
+	});
+
+	/* Function to query walmart's open api, and retrieve the walmart location in the west lafayette, lafayette area */
+	/* INCOMPLETE */
+	function getWalmarts() {
+		$.get('http://api.walmartlabs.com/v1/stores?apiKey=e3a4mdbpmcawatrnh7zq8scw&format=json&zip=47906', function(data){ alert(data);}, 'json')
+	}
+	getWalmarts();
+	
+	/* POST function to query db server containing dataset of farmers markets in the West Lafayette area (A subset taken from Data.gov).
+	callBack function called to handle to data response.*/
+	$.post('http://herrod-champ.sensidev.com/api.php', {"column":"*","table":"local_markets"}, function(data){testCallback(data)}); 
+
+	/* Global variable to hold all market/store map markers */
+	var markers = [];
+
+	/* callBack function to handle market query response data.  The function creates a google map marker
+	for each market result, adds a custom icon, puts the marker on the map, adds marker to the global
+	list of markers, and adds a click listener to each marker.
+	@param: markets -- the market data result from previous market query */
+	function testCallback(markets) {
+	  var image = {
+		url: "site_includes/marker2.png", 
+		size: new google.maps.Size(25, 45),
+		origin: new google.maps.Point(0,0),
+		anchor: new google.maps.Point(13,45),
+	  }; 
+	  for (x = 0; x < markets.length; x++) {
+	    $('.selector2').append($('<option />').val(markets[x]['table_name']).text(markets[x]['name']));
+	    var marker = new google.maps.Marker({
+	      position: {lat: Number(markets[x]['lat']), lng: Number(markets[x]['lng'])},
+	      animation: google.maps.Animation.DROP,
+	      map: map,
+	      icon: image,
+	      title: markets[x]['name']
+	    });
+	    marker.value = markets[x]['table_name'];
+	    markers.push(marker);
+	    marker.addListener('click', toggleBounce);
+	  }
+	};
+
+	/* Functoin to animate map markers.  Target market selector is updated with proper name,
+	other marker animations are turned off, target marker is animated, and distance from user
+	location to target market calculated.*/
+	function toggleBounce() {
+	  $('.selector2').val(this.value);
+	  for (var i = 0; i < markers.length; i++) {
+	    markers[i].setAnimation(null);
+	  }
+	  this.setAnimation(google.maps.Animation.BOUNCE);
+	  calculateDistance(user_loc);
+	};
+
+	/* Target market listener function.
+	onChagne -- removes animations from all other markers, re-animates target market icon, and calculate distance to new, target market */
+	$('.selector2').change(function() {
+	  for (var i = 0; i < markers.length; i++) {
+	    markers[i].setAnimation(null);
+	    if (markers[i].value == this.value) {
+	      markers[i].setAnimation(google.maps.Animation.BOUNCE)
+	    }
+	  }
+	  calculateDistance(user_loc);
+	});
+	
+	/* Target produce item listener function.
+	onChange -- calls updateChartPrice*/
+         $('#selector').change(function() {
+           updateChartPrice(this.value);
+         });
+
+	/* Function to dynamically update radar chart to reflect the price of the target product from the target market*/
+	/* INCOMPLETE */
+	function updateChartPrice(food_id) {
+		$.post('http://herrod-champ.sensidev.com/api.php', {"column":"price, freshness","table": $('.selector2').val(), "where" : "produce_id = " + food_id}, function(data) {
+			alert(data[0]['price']);
+		});
+ 	};
+
+	/* Function to get the User's location*/
+	getLocation();
+	function getLocation() {
+    		if (navigator.geolocation) {
+   			navigator.geolocation.getCurrentPosition(showPosition, showError);
+    		} else { 
+        		alert('Geolocation is not supported by this browser.');
+    		}
+	};
+
+	/* Function to put a marker on google map, representing the user,
+	registers a listener to calculate a distance everytime user marker is dragged-and-dropped.
+	@param: position -- the geolocation position object returned from navigator*/
+	function showPosition(position) {
+    		var lat = position.coords.latitude; 
+    		var lng = position.coords.longitude;
+		user_loc = new google.maps.Marker({
+                	position: {lat: Number(lat), lng: Number(lng)},
+                	animation: google.maps.Animation.DROP,
+                	map: map,
+                	draggable: true,
+			title: "You are here!"
+                });
+		calculateDistance(user_loc);
+		user_loc.addListener('dragend', calculateDistance);
+	};
+
+	/* Function to calculate a distance detween a location and a target.
+	The target is one of the selected markets and "location" is the position
+	of the user.
+	@param: location -- user's location*/ 
+	function calculateDistance(location) {
+		var destination = $('.selector2').val();
+		for (var i = 0; i < markers.length; i++) {
+			if (markers[i].value == destination) {
+				destination = markers[i].position;
+				break;
+			}
+		}
+		var origin = (this.position !== undefined) ? this.position : location.position;
+		var service = new google.maps.DistanceMatrixService();
+		service.getDistanceMatrix(
+  		{
+    		origins: [{lat: origin.lat(), lng: origin.lng()}],
+    		destinations: [{lat: destination.lat(), lng: destination.lng()}],
+    		travelMode: google.maps.TravelMode.DRIVING,
+		unitSystem: google.maps.UnitSystem.IMPERIAL,
+    		avoidHighways: false,
+    		avoidTolls: false,
+  		}, callback);
+
+		function callback(response, status) {
+			if (status == google.maps.DistanceMatrixStatus.OK) {
+   				var origins = response.originAddresses;
+  				var destinations = response.destinationAddresses;
+
+    				for (var i = 0; i < origins.length; i++) {
+      					var results = response.rows[i].elements;
+      					for (var j = 0; j < results.length; j++) {
+        					var element = results[j];
+        					var distance = element.distance.text;
+        					var duration = element.duration.text;
+        					var from = origins[i];
+        					var to = destinations[j];
+						$('#distance').val(distance);
+      					}
+    				}
+  			}
+		}
+	};
+
+	/* Function to show an error in the geolocationa cquisition process
+	mainly used for testing */
+	function showError(error) {
+    		switch(error.code) {
+        	  case error.PERMISSION_DENIED:
+            		alert('User denied the request for Geolocation.');
+            		break;
+        	  case error.POSITION_UNAVAILABLE:
+            		alert('Location information is unavailable.');
+            		break;
+        	  case error.TIMEOUT:
+            		alert('The request to get user location timed out.');
+            		break;
+        	  case error.UNKNOWN_ERROR:
+            		alert('An unknown error occurred.');
+            		break;
+    		}
+	};
+
+	/* Function to initialize google map */
+	function initMap() {
+        	map = new google.maps.Map(document.getElementById('map'), {
+           	center: {lat: 40.441577, lng: -86.908967},
+           		zoom: 12,
+	   		mapTypeControl: false,
+	  		streetViewControl: false,
+	   		zoomControl: true,
+	   		draggable: true,
+	   		scrollwheel: false,
+         	});
+	}
+
+	/* Code to detect the device used by the client, 
+	   used for determining different site behaviors*/
+	function detectmob() { 
+       		if( navigator.userAgent.match(/Android/i)
+         	 || navigator.userAgent.match(/webOS/i)
+         	 || navigator.userAgent.match(/iPhone/i)
+	 	 || navigator.userAgent.match(/iPad/i)
+	 	 || navigator.userAgent.match(/iPod/i)
+	 	 || navigator.userAgent.match(/BlackBerry/i)
+	 	 || navigator.userAgent.match(/Windows Phone/i)
+	 	) {
+	  		return true;
+		}  else {
+    	  		return false;
+  		}
+	}
+
+	/* Function to allow map to stay put during scroll */
+	function sticky_relocate() {
+        	var window_top = $(window).scrollTop();
+         	var div_top = $('#map-anchor').offset().top;
+	 	if (window_top > div_top && !detectmob()) {
+             		$('#map-holder').addClass('stick');
+	     		$('#map-holder').width($('#map-column').width());
+		} else {
+ 	        	$('#map-holder').removeClass('stick');
+        	}
+     	}
+
+	/* Scroll listener function */
+ 	$(function () {
+        	$(window).scroll(sticky_relocate);
+         	sticky_relocate();
+	});
+
+	/* Radar Chart Code */
+	var margin = {top: 60, right: 60, bottom: 60, left: 60},
+		width = Math.min(457.5, window.innerWidth - 10) - margin.left - margin.right,
+		height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+			
+	var chartData = [
+		[//iPhone
+			{axis:"Freshness",value:0.8},
+			{axis:"Cost",value:0.45},
+			{axis:"Distance",value:0.29},
+		],[//Samsung
+			{axis:"Freshness",value:0.27},
+			{axis:"Cost",value:0.9},
+			{axis:"Distance",value:0.5},
+		],[//Nokia Smartphone
+			{axis:"Freshness",value:0.46},
+			{axis:"Cost",value:0.10},
+			{axis:"Distance",value:0.7},
+		]
+	];
+
+	var color = d3.scale.ordinal().range(["#EDC951","#CC333F","#00A0B0"]);
+				
+	var radarChartOptions = {
+		  w: width,
+		  h: height,
+		  margin: margin,
+		  maxValue: 1,
+		  levels: 3,
+		  roundStrokes: true,
+		  color: color
+		};
+	//Call function to draw the Radar chart
+	RadarChart(".radarChart", chartData, radarChartOptions);
+     </script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5wLhnIZX1forTvrYIw3NXrG6yyt0uHSE&callback=initMap"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="site_includes/assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="site_includes/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

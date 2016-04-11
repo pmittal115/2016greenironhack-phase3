@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Eat Fresh</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    
+
+    
+</head>
+<body>
+<!-- Navigation -->
+    <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand">
+                <a href="#top"  onclick = $("#menu-close").click(); >Search Nearby</a>
+            </li>
+            <li>
+                <a href="#top" onclick = $("#menu-close").click(); >Products</a>
+            </li>
+            <li>
+                <a href="#about" onclick = $("#menu-close").click(); >Seasonal produce</a>
+            </li>
+            <li>
+                <a href="#about" onclick = $("#menu-close").click(); >Markets</a>
+            </li>
+            <li>
+                <a href="#about" onclick = $("#menu-close").click(); >Events</a>
+            </li>
+            <li>
+                <a href="#about" onclick = $("#menu-close").click(); >Recipes</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header id="top" class="header">
+        <div class="text-vertical-center">
+            <h1>Eat Fresh, Stay Healthy</h1>
+            <h3>Get access to Fresh local produce at Farmers Markets &amp; Stands</h3>
+            <br>
+            <a href="#map" class="btn btn-dark btn-lg">Find Out More</a>
+        </div>
+    </header>
+    
+    <!-- Info About Weather -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 id ="isdayclear"></h2>
+                    <p class="lead">Find out outdoor Farmer's markets near you.</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+    
+    
+    <div id="map" class="map"></div>
+    <!--
+    <small>
+            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
+        </small>
+    -->
+        
+
+<script>
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear()-1; //data not available for recent dates
+
+if(dd<10) {
+    dd='0'+dd
+} 
+
+if(mm<10) {
+    mm='0'+mm
+} 
+
+today = yyyy+'-'+mm+'-'+dd;
+    //console.log(today);
+  
+var xmlhttp = new XMLHttpRequest();
+//var url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/datasets/";
+var url = "http://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=GHCND&locationid=ZIP:47906&startdate="+today+"&enddate="+today ; 
+var token = "MVBSOBYURjJUHjDAtDxQUMwPXrwpinxd";    
+    
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = (JSON.parse(xmlhttp.responseText)).results;
+        console.log(myArr);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.setRequestHeader("token", token);
+//xmlhttp.setRequestParams();
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "Its a clear day!";
+    if (arr[2].value <3); // Less precipitation
+    document.getElementById("isdayclear").innerHTML = out;
+}   
+    
+    
+    
+    <!---------------------------------------------------------------->
+/*        
+function getResults(zip) {
+    // or
+    // function getResults(lat, lng) {
+    $.ajax({
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        // submit a get request to the restful service zipSearch or locSearch.
+        url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + "47906",
+        // or
+        // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng,
+        crossDomain: true,
+        dataType: 'jsonp',
+        jsonpCallback: 'searchResultsHandler'
+    });
+}
+//iterate through the JSON result object.
+function searchResultsHandler(searchResults) {
+    //console.log(searchResults);
+    for (var key in searchresults) {
+        alert(key);
+        var results = searchresults[key];
+        for (var i = 0; i < results.length; i++) {
+            var result = results[i];
+            for (var key in result) {
+                //only do an alert on the first search result
+                if (i == 0) {
+                    alert(result[key]);
+                }
+            }
+        }
+    }
+}
+        
+getResults("47906");
+*/
+        
+        /*
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=47906",
+  "method": "GET",
+  "headers": {
+    "cache-control": "no-cache",
+  }
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+
+*/
+        
+        
+        
+        
+        var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+
+xhr.open("GET", "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=47906");
+xhr.setRequestHeader("cache-control", "no-cache");
+//xhr.setRequestHeader("postman-token", "423d9ce3-5248-bac7-d0ff-146a2821c0ac");
+
+xhr.send(data);
+    <!---------------------------------------------------------------->
+     
+    
+    
+    
+    
+
+</script>
+
+
+    
+    <script>
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Scrolls to the selected menu item on the page
+    //$(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    //});    
+        
+    </script>
+    
+    
+    
+</body>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&key=AIzaSyD8pwca_OWypNj0CIBc7KrfvKVe7viRZ8g&callback=initMap"
+    async defer></script>
+    <script src="js/js_map.js"></script>

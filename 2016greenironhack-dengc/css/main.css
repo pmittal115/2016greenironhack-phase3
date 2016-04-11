@@ -1,0 +1,149 @@
+/*
+This is the tutorial project for 2015-fall Purdue Ironhack, which is organized by Reserach Center of Open Digital Innovation(RCODI) at Purdue University. 
+If you want to know more about the Ironhack or about the RCODI, please find our website here: https://www.purdue.edu/opendigital/
+You can checkout the code for this project on github: https://github.com/charlessong0/2015-Purdue-Ironhack
+The demo page of this project is located at: http://test.rcodi.charlessong.me/
+*/
+
+/* make the body div cover the whole page */
+
+html, body { 
+height: 140%; 
+margin: 12; 
+padding: 0; 
+background-image: url("background.jpeg");
+background-repeat: no-repeat;
+background-position: bottom;
+-webkit-background-size: 1400px 1400px;
+}
+
+.bubbleChart {
+	min-width: 100px;
+	max-width: 800px;
+	height: 500px;
+	margin: 0 auto;
+}
+
+/* use "#" for ids and use "." for classes
+usually an id in unique in one html page*/
+#header {
+    background-color:green;
+    text-align:center;
+    padding:5px;
+}
+
+h1 {
+    color: red;
+    font-style: oblique;
+    font-size: 333%;
+}
+
+#title{
+	font-size: 120%;
+	color:white;
+}
+
+#map{
+	/* here we use absolute layout to find the position for google map
+	you may want to use relative rather than absolute in your own application */
+	position: absolute;
+    /* cover the 70 percent of the page width*/
+    width: 70%;
+    height: 70%;
+}
+
+#sec1{
+	position: absolute;
+	/* define the postiion of information panel */
+	left: 72%;
+}
+
+#info{
+	position: absolute;
+	/* define the postiion of information panel */
+	top: 100%;
+
+}
+
+#position-info{
+	background-color: #edeff1;
+	width: 40%;
+}
+
+#sec2{
+	position: absolute;
+	/* define the postiion of information panel */
+	left: 42%;
+	top:0%;
+}
+
+#side-menu{
+	position: absolute;
+	/* define the postiion of information panel */
+	top: 105%;
+	left: 0%;
+    /* cover the 30 percent of the page width*/
+	width: 100%;
+	height: 0%;
+
+
+}
+
+#menu-cover{
+	position: absolute;
+	top: 3%;
+	left: 3%;
+}
+
+.menu-line{
+	height: 40px;
+}
+
+#menu-cover {
+	height: 35%;
+	width: 90%;
+	/* define the background color of the information panel */
+/*	background-color: #edeff1;
+*/	/* set radius for the ellipse frame */
+    border-radius: 11px;
+    /* add paddings so there would be some blank spaces around the informaiton panel */
+    padding: 24px 23px 20px;
+    /* settings for the font */
+    font-family: "Lato",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+}
+
+/* there defines every single line in the information panel */
+.menu-line{
+	border-radius: 11px;
+    box-shadow: none;
+    color: #34495e;
+    font-family: "Lato",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.467;
+    padding: 4px 4px;
+}
+
+.button1{
+    height:30px;
+    width:250px;
+	position: absolute;
+	top: 493%;
+	left: 20%;
+}
+
+.button2{
+    height:30px;
+    width:250px;
+	position: absolute;
+	top: 593%;
+	left: 20%;
+}
+  
+  #sec3{
+
+  position: absolute;
+  /* define the postiion of information panel */
+  left: 72%;
+  top:50%;
+  }

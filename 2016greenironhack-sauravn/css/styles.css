@@ -1,0 +1,132 @@
+/*
+A custom Bootstrap 3.1 theme from http://bootply.com\
+
+This CSS code should follow the 'bootstrap.css'
+in your HTML file.
+
+license: MIT
+author: bootply.com
+*/
+
+
+html,body{
+  	height:100%;
+}
+
+body{
+  	padding-top:50px; /*padding for navbar*/
+}
+
+.navbar-custom .icon-bar {
+	background-color:#fff;
+}
+
+.navbar-custom {
+	background-color: #168ccc;
+    color:#fff;
+}
+
+.navbar-custom li>a:hover,.navbar-custom li>a:focus {
+	background-color:#49bfff;
+}
+
+.navbar-custom a{
+    color:#fefefe;
+}
+
+.navbar-custom .form-control:focus {
+	border-color: #49bfff;
+	outline: 0;
+	-webkit-box-shadow: inset 0 0 0;
+	box-shadow: inset 0 0 0;
+}
+
+#main, #main>.row {
+	height:100%;
+}
+
+#main>.row {
+    overflow-y:scroll;
+}
+
+#left {
+	height:100%;
+}
+
+#map-canvas {
+	width:33.3333%;
+    height:calc(100% - 0);
+    position:absolute;
+    right:16px;
+    top:50px;
+    bottom:0;
+    overflow:hidden;
+}
+
+#g1,
+#g2,
+#g3,
+#g4 {
+	width: 160px;
+    height: 120px;
+    display: inline-block;
+    margin: 1em;
+}
+
+.p {
+    display: block;
+    width: 450px;
+    margin: 2em auto;
+    text-align: left;
+}
+
+.bullet { font: 10px sans-serif; }
+.bullet .marker { stroke: #000; stroke-width: 2px; }
+.bullet .tick line { stroke: #666; stroke-width: .5px; }
+.bullet .range.s0 { fill: #eee; }
+.bullet .range.s1 { fill: #ddd; }
+.bullet .range.s2 { fill: #ccc; }
+.bullet .measure.s0 { fill: lightsteelblue; }
+.bullet .measure.s1 { fill: steelblue; }
+.bullet .title { font-size: 14px; font-weight: bold; }
+.bullet .subtitle { fill: #999; }
+
+button {
+	position: absolute;
+	left: 385px;
+	top: 98px;
+	width: 150;
+}
+
+.axis line {
+      stroke: #000;
+}
+
+.axis path {
+      fill: none;
+      stroke: #000;
+}
+
+.layer {
+      stroke: black;
+      fill: none;
+}
+
+.outlier {
+      stroke: black;
+      fill: none;
+      opacity: 0.3;
+}
+
+.axis + .axis g text {
+      display: none;
+}
+
+.legend {
+				font-family: 'Raleway', sans-serif;
+				fill: #333333;
+}
+			
+.tooltip {
+				fill: #333333;
+}

@@ -1,0 +1,166 @@
+html, body {
+	background-color: #f9f9f9;
+	color: #9e9e9e;
+	font-size: 13px;
+	font-family: Calibri, "Segoe UI";
+	font-style: normal;
+	font-weight: 400;
+}
+
+
+#menu{
+	background-color: #474747;
+	position: absolute;
+	width: 240px;
+	height: 100%;
+	top: 0px;
+}
+
+#input{
+	border: 3px solid #1B1F7C;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+}
+
+#analysis{
+	border: 3px solid #73AD21;
+	position: absolute;
+	left: 50%;
+	width: 50%;
+	height: 50%;
+}
+
+
+#headLine {
+	height: 60px;
+	color: #DDDDDD;
+	background-color: #FFFFFF;
+	width: 100%;
+	position: fixed;
+	z-index: 1;
+	visibility: visible;
+
+}
+#logo {
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size: 24px;
+	color: #DBDBDB;
+	font-style: normal;
+	text-align: center;
+}
+
+@media screen{
+#info {
+	height: 20px;
+	left: 250px;
+	top: 0px;
+	position: absolute;
+	-webkit-box-shadow: 0px 0px #646464;
+	box-shadow: 0px 0px #646464;
+	z-index: 0;
+}
+
+#map{
+	height: 100%;
+	position: fixed;
+	left: 0%;
+}
+
+#logo {
+	margin-top: 15px;
+	color: #F3F3F3;
+	font-family: cabin;
+	font-style: normal;
+	font-weight: 400;
+}
+
+#logoIcon {
+}
+.navi {
+	color: #FBFBFB;
+	margin-top: 160px;
+	text-align: center;
+	font-size: large;
+	font-family: andika;
+	font-style: normal;
+	font-weight: 400;
+	height: 55px;
+	padding-top: 8px;
+	     -webkit-transition: background-color 0.2s;
+        -moz-transition:    background-color 0.2s;
+        -ms-transition:     background-color 0.2s;
+        -o-transition:      background-color 0.2s;
+        transition:         background-color 0.2s;
+}
+#index {
+}
+#indexIcon {
+	font-family: andika;
+	font-style: normal;
+	font-weight: 400;
+	width: auto;
+}
+#mapIcon {
+	margin-top: 0.1px;
+
+}
+
+    .navi:hover {
+		background-color: #363636;
+    }
+#content {
+	position: fixed;
+	top: 60px;
+	height: 100%;
+	width: 100%;
+}
+
+#storeList {
+	
+}
+
+.bubbleChart {
+	height: 350px;
+	margin-left: 350px;
+	width: 350px;
+	position: absolute;
+	margin-top: 280px;
+}
+
+#contentHeadLine {
+	margin-left: 10px;
+	position: absolute;
+}
+
+.shorticon:before {
+	content:"\f01f";
+}
+.card {
+	height: 330px;
+	width: 290px;
+	-webkit-box-shadow: 1px 1px 1px 1px #B8B8B8;
+	box-shadow: 1px 1px 1px 1px #B8B8B8;
+	margin-top: 7px;
+	position: absolute;
+	left: 1000px;
+	font-size: xx-large;
+
+}
+#card1 {
+	position: absolute;
+	margin-left: 7px;
+	left: 7px;
+}
+
+
+
+}
+#card2 {
+	left: 320px;
+	position: absolute;
+}
+#card3 {
+	position: absolute;
+	left: 627px;
+}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Fresh Vegetables Application</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+        
+        <!-- code added-->
+        
+        <link rel="stylesheet" href="css/tutorial.css" type="text/css"/>
+		<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="js/RadarChart.js"></script>
+        <script src="js/tutorial.js" type="text/javascript"></script>
+        <script src="js/script.js" type="text/javascript" ></script>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css' />
+        <!-- For the fancy drop down -->
+        <script type="text/javascript" src="js/modernizr.custom.79639.js"></script>
+        <noscript><link rel="stylesheet" type="text/css" href="css/noJS.css" /></noscript>
+        <!-- For the social media share buttons -->
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher: "b7aa0060-f57d-4ef8-aa69-7420144f6b4b", doNotHash: false, doNotCopy: false, hashAddressBar: false});		
+        </script>
+        
+        <!-- For the API and Maps -->
+        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css"></link>
+		<link type="text/css" rel="stylesheet" href="css/style_api.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        
+      
+        
+	</head>
+	<body>
+    <!-- begin template -->
+    <div class="navbar navbar-custom navbar-fixed-top">
+     <div class="navbar-header">
+       <p><a class="navbar-brand" href="index.html"><strong>FreshVeggie</strong></a></p>
+       <p>
+         <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </a></p>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          <li class="active"><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li> 
+            <li><a href="#" class="wrapper-dropdown-1">Receipe of the Day</a></li>
+            <li>&nbsp;</li>
+          </ul> 
+        </div>
+    </div>
+
+    <!-- <div id="map-canvas"></div> -->
+    <!-- Google Maps -->
+    <div class="themap" id="gmap"></div>
+    <i class="fa fa-spinner fa-3x fa-pulse loading-image" data-bind="visible: loading"></i>
+    <!-- <div id="map"> </div> -->
+    <div class="container-fluid" id="main">
+      <div class="row">
+        <div class="col-xs-8" id="left">
+        
+          <h2>&nbsp;</h2> 
+          
+          <!-- item list -->
+          <!-- <div class="panel panel-default">
+            <div class="panel-heading"><a href="">Fresh Vegetables</a></div>
+          </div> -->
+          
+          <!-- Search bar -->
+          <div class="panel panel-default">
+		  	<div class="navbar-element settings-div">
+				<a href="" id="settings" data-bind="click: toggleSettings"> <i class="fa fa-cog" style="color:#333"></i> </a>
+				<div class="settings-menu-background" style="display:none" data-bind="visible: settingsOpen, click: toggleSettings">&nbsp;</div>
+				<div class="settings-menu-container" style="display:none" data-bind="visible: settingsOpen">
+					<div class="arrow-up"></div>
+				<!-- temperature units -->
+				<div>
+					<div class="settings-menu item">Temperature
+					</div><div class="settings-menu option"
+						data-bind="css: { active: selectedTEMP() == 'C'}, click: setSelectedTEMP.bind($data, 'C')">C&deg;
+					</div><div class="settings-menu option"
+						data-bind="css: { active: selectedTEMP() == 'F'}, click: setSelectedTEMP.bind($data, 'F')">F&deg;</div>
+				</div>
+				<!-- precip units -->
+				<div>
+					<div class="settings-menu item">Precipitation
+					</div><div class="settings-menu option"
+						data-bind="css: { active: selectedPRCP() == 'mm'}, click: setSelectedPRCP.bind($data, 'mm')">mm
+					</div><div class="settings-menu option"
+						data-bind="css: { active: selectedPRCP() == 'in'}, click: setSelectedPRCP.bind($data, 'in')">in</div>
+				</div>
+				<!-- <div class="settings-menu about">About</div> -->
+			  </div>
+			</div>
+            <div class="navbar-element places-div">
+				<input class="places-input" id="google_geolocator" type="text" >
+			</div>
+            <div class="navbar-element other-div">
+				<div class="daag-container" data-bind="click: toggleDatepicker">
+					<div class="daag-month" data-bind="text:getMonth">&nbsp;
+					</div>
+                    <div class="daag-day" data-bind="text:getDay">&nbsp;
+					</div>
+                    <div class="daag-year" data-bind="text:getYear">&nbsp;
+					</div>
+				</div> 
+			<input type="text" id="selectedDate" style="display:none;" data-bind="textInput: selectedDate">
+			</div>(Choose Date)
+		</div>
+
+          <!-- End Search bar -->
+          
+          <!-- Date picker -->
+          <div id="infowindow" style="display:none" data-bind="visible: infowindowOpen, with: selectedStation">
+			<table class="infowindow">
+                <thead>
+                    <tr><th colspan="2" data-bind="text: id.substring(6)"></th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Name:</th>
+                        <td><span data-bind="attr: { title: name }, text: name.substring(0,7) + '...'"></span></td>
+                    </tr>
+                    <!-- ko foreach: $root.selectedData() -->
+                    <tr>
+                        <th data-bind="text: name"></th>
+                        <td><span data-bind="text: value"></span>
+                            <span data-bind="text: units"></span>
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                    <tr>
+                        <td colspan="2" style="text-align:center">
+                            <!-- <a target="_blank" data-bind="attr: {href: $root.composeQuickDataUrl($data)}">Quick Data</a> -->
+                        </td>
+                    </tr>
+                 </tbody>
+			  </table>
+			</div>
+
+            <div id="infowindow-closing" style="display:none">
+                closing
+            </div>
+
+            <div class="date-picker-background" style="display:none" data-bind="visible:datepickerOpen, click: toggleDatepicker">
+                <div class="date-picker-container">
+                    <div id="datepicker"></div>
+                    <div class="datepicker-maxdatemessage">
+                        Most Recent Data: <span data-bind="text: maxDate"></span>
+                    </div>
+                </div>
+            </div>
+          
+          <!-- End Date picker -->
+          
+            <!-- gauge bars -->
+            <div id="g1"></div>
+    		<div id="g2"></div>
+    		<div id="g3"></div>
+            <div id="g4"></div>
+            <br>
+            
+          <!-- print wheather data -->  
+           <div id="printwthr" data-bind="visible: infowindowOpen, with: selectedStation">
+            <table>
+                <thead>
+                    <tr><th colspan="2" data-bind="text: id.substring(6)"></th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Name:</th>
+                        <td><span data-bind="attr: { title: name }, text: name.substring(0,7) + '...'"></span></td>
+                    </tr>
+                    <!-- ko foreach: $root.selectedData() -->
+                    <tr>
+                        <th data-bind="text: name"></th>
+                        <td><span data-bind="text: value"></span>
+                            <span data-bind="text: units"></span>
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                    <tr>
+                        <td colspan="2" style="text-align:center">
+                            <!-- <a target="_blank" data-bind="attr: {href: $root.composeQuickDataUrl($data)}">Quick Data</a> -->
+                        </td>
+                    </tr>
+                 </tbody>
+			  </table>
+            </div>
+            <!-- social icons -->
+            <span class='st_facebook_large' displayText='Facebook'></span>
+            <span class='st_twitter_large' displayText='Tweet'></span>
+            <span class='st_linkedin_large' displayText='LinkedIn'></span>
+            <span class='st_pinterest_large' displayText='Pinterest'></span>	
+            
+            
+            <!-- adding the graph -->
+           <!--  <div id="basic-info" class="menu-line">
+                <div id="weather" class="menu-line">sunny!</div>
+            </div>
+            <div id="position-info">
+                <div id="market" class="menu-line">
+                 	<div id="market-name" class="test"></div>
+                    <div id="website" class="test"></div>
+                </div>
+                <div id="website" class="menu-line"></div>
+                <div id="street-name" class="menu-line"></div>
+                <div id="open-status" class="menu-line"></div>
+            </div>
+            <div id="chart"></div>
+            <div id="scores" class="menu-line"></div>
+            <div id="comments" class="menu-line"></div>   -->   
+          
+          <hr>
+         
+          </div>
+        <!-- <div class="col-xs-4"> -->
+        <!--map-canvas will be postioned here-->
+        <!-- </div> -->
+        
+         <!-- <div id="map">
+            </div> -->
+        
+      </div>
+    </div>
+    <!-- end template -->
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
+		<script src="js/scripts.js"></script>
+        
+        <!-- code added -->
+       <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWhs2R0Maa3QQtLZbtbstPXK7w9cgmJho&callback=initMap"></script> -->
+
+
+	<!-- <script src="//static.getclicky.com/js" type="text/javascript"></script>
+	<script type="text/javascript">try{ clicky.init(100881512); }catch(e){}</script>
+	<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100881512ns.gif" /></p></noscript> -->
+    
+    <!-- for API -->
+    <script type="text/javascript" src="http://knockoutjs.com/downloads/knockout-3.3.0.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWrqr3XYjEc-xICLC__yLxZlN3M_sxKt0&libraries=places"></script>
+	<script type="text/javascript" src="js/script_api.js"></script>
+	<script>
+		ko.applyBindings(new QuickDataTool.ViewModel());
+	</script>
+    <!-- For the gauge meters -->
+    <script src="js/raphael-2.1.4.min.js"></script>
+	<script src="js/justgage.js"></script>
+        
+    <!-- gauge script -->
+    <script>
+    var g1, g2, g3;
+	
+    document.addEventListener("DOMContentLoaded", function(event) {
+        g1 = new JustGage({
+            id: "g1",
+            value: getRandomInt(350, 480),
+            min: 350,
+            max: 980,
+            title: "Precipitation",
+            label: "millimetre ",
+			labelFontColor: "blue"
+        });
+
+        g2 = new JustGage({
+            id: "g2",
+            value: 82,
+            min: 50,
+            max: 100,
+            title: "Snow",
+            label: "millimetre",
+			labelFontColor: "blue"
+        });
+
+        g3 = new JustGage({
+            id: "g3",
+            value: 120,
+            min: 50,
+            max: 100,
+            title: "Max Temparature",
+            label: "F",
+			labelFontColor: "blue"
+        });
+		
+		g4 = new JustGage({
+            id: "g4",
+            value: 120,
+            min: 50,
+            max: 100,
+            title: "Min Temparature",
+            label: "F",
+			labelFontColor: "blue"
+        });
+
+        setInterval(function() {
+            //g1.refresh(getRandomInt(350, 980));
+            g2.refresh(getRandomInt(0, 49));
+            g3.refresh(getRandomInt(101, 200));
+        }, 2500);
+    });
+	
+    </script>
+    
+	</body>
+</html>

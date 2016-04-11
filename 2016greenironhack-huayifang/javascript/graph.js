@@ -1,0 +1,1 @@
+// This script will enable the application to visualize the result of the query, which help user to make their decisions.

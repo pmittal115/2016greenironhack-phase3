@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/radarChart.js"></script>
+
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/scrolling-nav.css" rel="stylesheet">
+
+	<title>FindMyVeggies</title>
+    <link rel="shortcut icon" href="image/icon.png" />
+</head>
+
+<!-- scrolling navigation bar -->
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="image/icon.png" class="navbar-icon"/>
+                <a class="navbar-brand page-scroll" href="#page-top">Find My Veggies</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                   	<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#app">The App</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#store-directory">Store Directory</a>
+                    </li>
+                </ul>
+                <div class="nav-bar-current-info">
+	                <img id="weather-icon">
+	                <p id="current-weather"></p>
+	                <p id="current-date"></p>
+	            </div>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+
+    <!-- Intro section -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Find My Veggies</h1>
+                    <h3>Don't know where to find fresher and cheaper veggies?<br>
+                    This app will tell you grocery stores near you and more!</h3>
+                    <a class="btn btn-primary btn-lg page-scroll" href="#app">Try it now</a>
+                </div>
+            </div>
+        </div>
+    </section>   
+
+    <!-- The app section -->
+    <section id="app" class="about-section">
+        <div class="container">
+        	<!-- map -->
+		    <div id="map"></div>
+		    <!-- side menu -->
+			<div class="side-menu">
+				<!-- side menu tabs -->
+				<ul class="nav nav-tabs nav-justified" id="customize-tag">
+			    	<li class="active"><a data-toggle="tab" href="#basic"><strong>Basic Information</strong></a></li>
+			    	<li><a data-toggle="tab" href="#comparison"><strong>Compare Stores</strong></a></li>
+			    	<li><a data-toggle="tab" href="#veggie-chart"><strong>Seasonal Veggies</strong></a></li>
+			  	</ul>
+			  	<!-- side menu tab contents-->
+			  	<div class="tab-content">
+			 		<!-- tab content for basic -->
+				   	<div id="basic" class="tab-pane fade in active">
+				      	<div id="menu-cover">
+				      		<h4 id="store-name">Click on markers on map to see store information</h4>
+				      		<div class="basic-info">
+				      			<p id="store-phone"></p>
+					      		<p><a id="store-website"></a></p>
+					      		<p id="open-hour-today"></p>
+					      		<p id="store-rating"></p>
+					      		<button class="btn btn-primary btn-sm" type="button" id="get-direction">Get Direction</button>
+					      	</div>
+					      	<div class="radar-chart">
+					      		<p>View of store information</p>
+								<div id="radar-chart-bi"></div>
+							</div>						
+						</div>
+				    </div>
+				    <!-- tab content for comparison-->
+				    <div id="comparison" class="tab-pane fade">
+						<div id="menu-cover">
+							<h4>Compare up to three stores</h4>
+							<p>Click on marker to add a store</p>
+							<div class="radar-chart">
+					      		<p>(Need to be edited)</p>		
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">price</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">ratings</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">frenshness</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">open hour</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">service</label>
+								<label class="checkbox-inline"><input type="checkbox" value="" checked="true">distance</label>
+								<p>Add/delete features for comparison</p>
+								<div id="radar-chart-cs"></div>		
+							</div>
+						</div>
+				    </div>
+				    <!-- tab content for veggie-chart -->
+				    <div id="veggie-chart" class="tab-pane fade">
+				    	<div id="menu-cover">
+				    		<h4>In season Veggies of this month</h4>
+				    		<div class=multi>
+				    		<p id="seasonal-veggies"></p>
+				    		</div>
+				    	</div>
+				    </div>
+			  	</div><!-- tab-contents -->
+			</div><!-- side-menu-->
+		</div><!-- /.container -->
+    </section>
+
+    <!-- Store Section -->
+    <section id="store-directory" class="store-section">
+        <div class="container">
+            <h1>Stores near you</h1>          
+			<table class="table table-hover">
+				<thead>
+				    <tr>
+				    	<th>Store Name</th>
+				    	<th>Location</th>
+				    	<th>Website</th>
+			      	</tr>
+			    </thead>
+			    <tbody id="store-directory">
+			    	<tr>
+				        <td>Walmart Supercenter</td>
+				        <td>2801 Northwestern Ave, West Lafayette, IN 47906</td>
+				        <td><a href="http://www.walmart.com/store/2339">http://www.walmart.com/store/2339</a></td>
+			      	</tr>
+			      	<tr>
+				        <td>Pay Less Super Market</td>
+				        <td>1032 Sagamore Pkwy W, West Lafayette, IN 47906</td>
+				        <td><a href="http://www.pay-less.com">http://www.pay-less.com</a></td>
+			      	</tr>
+			      	<tr>
+				        <td>Fresh City Market</td>
+				        <td>720 Northwestern Ave, West Lafayette, IN 47906</td>
+				        <td><a href="http://freshcitymarket.com">http://freshcitymarket.com</a></td>
+			      	</tr>   
+			    </tbody>
+			</table>
+			<h4>(Need to be edited)</h4>
+		</div>
+    </section>  
+
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  		<script src="js/bootstrap.min.js"></script>
+
+  		<script src="js/jquery.easing.min.js"></script>
+    	<script src="js/scrolling-nav.js"></script>
+
+		<script src="js/map.js" type="text/javascript"></script>
+		<script src="js/veggies.js" type="text/javascript"></script>		
+		<script src="js/datasheet.js" type="text/javascript"></script>
+		<script src="js/decisiontree.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+    	<script src="js/drawChartBI.js" type="text/javascript"></script>
+    	<script src="js/drawChartCS.js" type="text/javascript"></script>
+
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAq2LC9akN1uvqZ8xKaGoihBxK6PEUyU8Q&libraries=places&callback=initMap" async defer></script>
+
+	</body>
+</html>	    

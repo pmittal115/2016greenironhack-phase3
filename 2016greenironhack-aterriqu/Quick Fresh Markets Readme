@@ -1,0 +1,32 @@
+1. Name of Application: Quick Fresh Markets
+
+2. Keywords: Quickness, Simplistic, Freshness, User Controlled.
+
+3.Dataset and function design:
+  - National Farmers Market Directory
+      - http://www.ams.usda.gov/local-food-directories/farmersmarkets
+      - Provides information about U.S. Farmers markets, locations, directions, operating time, product offerings, and payment methods.
+  - Climate Data Online
+      - http://www.ncdc.noaa.gov/cdo-web/webservices
+      - Climate data products that give Annual,Monthly, and daily normals.
+  - Fruit and Vegetable Market News Search
+      - http://marketnews.usda.gov/
+      - Provides information about produce prices in different regions
+      
+4.  Quick Fresh Markets is a web application that makes it easy for users to search for local farmers markets around their area.
+    Users will be able to enter a seach locations and a interactive map will display pins, indicating farmers market locations.
+    Users can select farmers markets and information will display about the address, time and products offered.  Users will also
+    be capable of filtering their search to specific products or prices.  The interactive map will also display the current weather.
+    Users will have the ability to rate and leave reviews for a certain farmers market.
+
+5. Tasks:
+  - Basic Interface
+  - Interactive map
+  - Connecting to datasets
+  - Market information.
+  - User Testing
+  - Project wrap-up
+5. Next Steps:
+  - Learn JavaScript
+  - Complete tasks.
+  - Have working prototype.
